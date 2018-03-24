@@ -169,7 +169,7 @@ namespace Life
                 if(key == 1)
                 {
                     Work(ref n, ref m, mass, mass2);
-                    Console.Clear();
+                    Console.Clear(); 
                     Output(ref n, ref m, mass2);
                 }
                 else
