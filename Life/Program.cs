@@ -55,6 +55,7 @@ namespace Life
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write("  ");
                     }
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
                 Console.WriteLine();
             }
@@ -158,6 +159,7 @@ namespace Life
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine("> Следующий шаг - 1");
                 Console.WriteLine("> Завершение программы - 2");
+                Console.WriteLine("> Автоматический режим(20 шагов) - 3");
                 Console.Write(">>");
 
                 int key;
@@ -172,6 +174,27 @@ namespace Life
                 }
                 else
                 {
+                    if(key == 3)
+                    {
+                        
+                        for(int q = 1; q < 20; q++)
+                        {
+                            DateTime time = new DateTime();
+                            time = DateTime.Now;
+
+                            Work(ref n, ref m, mass, mass2);
+                            Console.Clear();
+                            Output(ref n, ref m, mass2);
+
+                            while (true)
+                            {
+                                DateTime next_step = new DateTime();
+                                next_step = DateTime.Now;
+                                if ((next_step.Second - time.Second) >= 1.0)
+                                    break;
+                            }
+                        }
+                    }
                     break;
                 }
             }
