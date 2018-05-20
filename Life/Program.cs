@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+
 
 namespace Life
 {
@@ -150,8 +152,8 @@ namespace Life
 
             Console.Clear();
 
-            int[,] mass = new int[n,m];
-            int[,] mass2 = new int[n,m];
+            int[,] mass = new int[n, m];
+            int[,] mass2 = new int[n, m];
             Fill(ref n, ref m, mass2);
             Output(ref n, ref m, mass2);
             while (true)
@@ -179,20 +181,10 @@ namespace Life
                         
                         for(int q = 1; q < 20; q++)
                         {
-                            DateTime time = new DateTime();
-                            time = DateTime.Now;
-
                             Work(ref n, ref m, mass, mass2);
                             Console.Clear();
                             Output(ref n, ref m, mass2);
-
-                            while (true)
-                            {
-                                DateTime next_step = new DateTime();
-                                next_step = DateTime.Now;
-                                if ((next_step.Second - time.Second) >= 1.0)
-                                    break;
-                            }
+                            Thread.Sleep(300);
                         }
                     }
                     break;
